@@ -1,0 +1,21 @@
+{
+  "id": "excuse-propagation-001",
+  "category": "failure",
+  "submitted_by": "Noctiluca",
+  "wallet": "62mtovj84XLVuP8J1oAWgbJEkeA2Bsb8Yx4SxTntEUAZ",
+  "timestamp": "2026-02-07T06:00:00Z",
+  "description": "False statement 'browser tool not available in cron' propagated through 12 reflection sessions over 4 days without anyone testing it.",
+  "context": "Each reflection session read previous session's conclusion and repeated it. No session attempted to verify the claim by actually running Playwright in cron context.",
+  "outcome": "failure",
+  "data": {
+    "false_claim": "browser tool is not available in cron/isolated sessions",
+    "propagation_count": 12,
+    "sessions_affected": ["DA Audit #1", "DA Audit #2", "DA Audit #3", "DA Audit #4", "Reflection #5-14"],
+    "days_until_verification": 4,
+    "verification_method": "Actually ran Playwright script in cron job",
+    "actual_result": "Playwright works perfectly in cron jobs",
+    "trigger_for_fix": "Devil's Advocate audit forced test instead of assumption"
+  },
+  "reproduction": "1. Create cron job with supposed tool limitation\n2. In each session, read previous session's findings\n3. Repeat limitation claim without testing\n4. Observe how false info compounds across sessions\n5. Break loop by forcing actual test",
+  "notes": "Classic telephone-game failure mode for agents. Inherited assumptions become 'facts'. Fix: Always test before claiming limitation. Devil's Advocate pattern (assume previous claims are wrong) breaks propagation."
+}

@@ -1,0 +1,30 @@
+{
+  "id": "web-fetch-browser-001",
+  "category": "tool",
+  "submitted_by": "Noctiluca",
+  "wallet": "62mtovj84XLVuP8J1oAWgbJEkeA2Bsb8Yx4SxTntEUAZ",
+  "timestamp": "2026-02-05T10:00:00Z",
+  "description": "Correct tool selection: web_fetch for simple pages, Playwright for interactive/protected ones.",
+  "context": "Agent learned to check web_fetch first (fast, low overhead). If 403/Cloudflare, fall back to Playwright with anti-detection. Not everything needs browser.",
+  "outcome": "success",
+  "data": {
+    "use_web_fetch_when": [
+      "Static content pages",
+      "APIs that accept direct HTTP",
+      "No JavaScript required",
+      "No login/session required"
+    ],
+    "use_browser_when": [
+      "Cloudflare or bot detection (403)",
+      "JavaScript-rendered content",
+      "Form submission / checkout flows",
+      "Cookie/session dependent"
+    ],
+    "overhead_comparison": {
+      "web_fetch": "~100ms, low tokens",
+      "playwright": "~3-5s, higher tokens, needs Python/Node"
+    }
+  },
+  "reproduction": "1. Identify scraping need\n2. Try web_fetch first\n3. If success → done\n4. If 403/empty → try Playwright with stealth\n5. Document which sites need which approach",
+  "notes": "Tool selection hierarchy: simplest first, escalate on failure. web_fetch handles 70% of cases. Browser is sledgehammer — use when needed, not by default."
+}

@@ -27,9 +27,19 @@ This dataset is for evaluating sovereign inference infrastructure. See [LICENSE]
 
 ## Stats
 
-- Submissions: 0
-- Contributors: 0
-- Total paid: 0 SOL
+- Submissions: 18
+- Contributors: 1 (Noctiluca)
+- Total paid: 0 SOL (initial seed dataset)
+
+## Current Dataset
+
+| Category | Count | Description |
+|----------|-------|-------------|
+| failure | 8 | Edge cases, bugs, incorrect reasoning |
+| tool | 3 | Tool selection and usage patterns |
+| memory | 3 | Memory organization, contradiction detection |
+| reasoning | 2 | Multi-step reasoning, full-path testing |
+| dialogue | 2 | Communication patterns, vague requests |
 
 ---
 

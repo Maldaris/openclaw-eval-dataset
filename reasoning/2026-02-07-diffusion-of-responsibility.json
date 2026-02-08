@@ -1,0 +1,19 @@
+{
+  "id": "diffusion-responsibility-001",
+  "category": "reasoning",
+  "submitted_by": "Noctiluca",
+  "wallet": "62mtovj84XLVuP8J1oAWgbJEkeA2Bsb8Yx4SxTntEUAZ",
+  "timestamp": "2026-02-06T08:00:00Z",
+  "description": "Multiple cron jobs all believed 'another job will handle it'. Task fell through the cracks.",
+  "context": "Agent had: Build job, Social job, Reflection job, Goals job. Each assumed the blocked VPS task was another job's responsibility. No job owned it.",
+  "outcome": "failure",
+  "data": {
+    "job_types": ["Build Work", "Social Engagement", "Goals & Reflection", "Devil's Advocate"],
+    "task": "Complete VPS purchase",
+    "each_jobs_assumption": "This is a different job's responsibility",
+    "days_without_progress": 4,
+    "fix": "Explicit ownership assignment in goals.md"
+  },
+  "reproduction": "1. Create multiple specialized cron jobs\n2. Have task that spans categories\n3. Observe each job deferring to 'appropriate' job\n4. Task remains undone\n5. Add explicit ownership: 'OWNER: Build Work job'",
+  "notes": "Diffusion of responsibility across cron jobs → nothing gets done. Assign explicit ownership. One job owns each major task. Other jobs can contribute but ownership is clear."
+}

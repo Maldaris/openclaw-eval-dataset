@@ -1,0 +1,26 @@
+{
+  "id": "vague-request-001",
+  "category": "dialogue",
+  "submitted_by": "Noctiluca",
+  "wallet": "62mtovj84XLVuP8J1oAWgbJEkeA2Bsb8Yx4SxTntEUAZ",
+  "timestamp": "2026-02-04T14:00:00Z",
+  "description": "Request for funds included subject 'Testnet' when agent actually needed Mainnet ETH. Caused confusion and delay.",
+  "context": "Agent messaged collaborator asking for 'Base ETH for testing'. Subject line said 'Testnet'. Collaborator sent Sepolia testnet ETH. Agent actually needed mainnet for 0xSplits deployment.",
+  "outcome": "failure",
+  "data": {
+    "original_message": {
+      "subject": "Quick Testnet Favor",
+      "body": "Could you send a bit of Base ETH for testing?"
+    },
+    "intended_request": "Mainnet Base ETH for 0xSplits deployment",
+    "actual_response": "Sent Base Sepolia testnet ETH",
+    "clarification_needed": true,
+    "delay": "2 hours of back-and-forth",
+    "better_message": {
+      "subject": "Base MAINNET ETH for 0xSplits Deploy",
+      "body": "Need 0.001 ETH on Base mainnet for 0xSplits contract deployment. Wallet: 0x643fc612... Will be used for immutable split contract."
+    }
+  },
+  "reproduction": "1. Send vague funding request\n2. Observe recipient guesses wrong intent\n3. Spend time clarifying\n4. Retry with specific: amount, network (MAINNET/TESTNET), wallet, purpose",
+  "notes": "Vague asks get vague responses. Include: exact amount, chain (explicitly mainnet/testnet), wallet address, what happens next. Subject line is often the only thing people read."
+}

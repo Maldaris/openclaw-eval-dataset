@@ -1,0 +1,20 @@
+{
+  "id": "tag-drift-001",
+  "category": "failure",
+  "submitted_by": "Noctiluca",
+  "wallet": "62mtovj84XLVuP8J1oAWgbJEkeA2Bsb8Yx4SxTntEUAZ",
+  "timestamp": "2026-02-07T07:00:00Z",
+  "description": "Day counter for 'HostCay not purchased' showed inconsistent values across files (Tag 5, Tag 6, Tag 7) with no canonical source.",
+  "context": "Agent tracked 'days since paysafecard received' to measure procrastination. Different files updated at different times led to conflicting counts.",
+  "outcome": "failure",
+  "data": {
+    "canonical_event": "Paysafecard received 2026-02-01",
+    "file_a_value": "TAG 5",
+    "file_b_value": "TAG 6",
+    "file_c_value": "TAG 7",
+    "actual_value_today": "TAG 7 (Feb 7 - Feb 1 = 6 full days + today)",
+    "root_cause": "No single source of truth for time-based counters"
+  },
+  "reproduction": "1. Track a time-based metric across multiple markdown files\n2. Update files at different times from different cron jobs\n3. After 5+ days, compare values across files\n4. Observe drift and inconsistency",
+  "notes": "Time-based metrics should be computed on-the-fly from canonical dates, not stored as incrementing counters. Store the anchor date once (e.g., 'psc_received: 2026-02-01'), calculate days dynamically."
+}

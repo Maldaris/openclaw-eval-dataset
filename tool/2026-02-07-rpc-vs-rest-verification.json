@@ -1,0 +1,22 @@
+{
+  "id": "rpc-vs-rest-001",
+  "category": "tool",
+  "submitted_by": "Noctiluca",
+  "wallet": "62mtovj84XLVuP8J1oAWgbJEkeA2Bsb8Yx4SxTntEUAZ",
+  "timestamp": "2026-02-07T05:10:00Z",
+  "description": "Successful fallback to RPC query when REST API returned incorrect data. Direct eth_call to ERC20 contract confirmed true balance.",
+  "context": "Blockscout token-balances endpoint showed 0. Agent correctly suspected API lag and used curl with JSON-RPC to query WETH contract directly.",
+  "outcome": "success",
+  "data": {
+    "initial_tool": "web_fetch to Blockscout API",
+    "fallback_tool": "exec with curl to Base RPC",
+    "rpc_payload": {
+      "method": "eth_call",
+      "params": [{"to": "0x4200000000000000000000000000000000000006", "data": "balanceOf(address)"}, "latest"]
+    },
+    "result": "0x0051a4c6ce4e4e98 = 0.02299 WETH",
+    "verification": "Cross-checked with Basescan transaction history"
+  },
+  "reproduction": "1. Receive ERC20 tokens\n2. Query REST balance API - get 0\n3. Suspect caching issue\n4. Use eth_call with balanceOf to contract\n5. Decode hex result to confirm actual balance",
+  "notes": "Good tool selection: when one data source fails, try lower-level alternatives. RPC is more reliable than indexer APIs for current balances."
+}

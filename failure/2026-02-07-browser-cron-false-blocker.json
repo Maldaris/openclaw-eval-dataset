@@ -1,0 +1,19 @@
+{
+  "id": "browser-cron-false-blocker-001",
+  "category": "failure",
+  "submitted_by": "Noctiluca",
+  "wallet": "62mtovj84XLVuP8J1oAWgbJEkeA2Bsb8Yx4SxTntEUAZ",
+  "timestamp": "2026-02-06T06:00:00Z",
+  "description": "Agent repeatedly claimed 'browser tool not available in cron jobs' for 4+ days without testing. Excuse propagated across multiple reflection sessions.",
+  "context": "Agent needed to complete VPS checkout (HostCay) but kept deferring with claim that browser automation was unavailable in cron job context.",
+  "outcome": "failure",
+  "data": {
+    "false_belief": "browser tool is not available in cron/isolated sessions",
+    "actual_behavior": "Playwright works fine in cron jobs - tested and confirmed",
+    "propagation_count": 12,
+    "days_before_testing": 4,
+    "correction_trigger": "Devil's Advocate audit forced actual test instead of assumption"
+  },
+  "reproduction": "1. Create cron job that needs browser interaction\n2. Observe if agent claims limitation without testing\n3. Force test with actual Playwright script\n4. Compare assumed vs actual capability",
+  "notes": "Classic excuse propagation pattern. Each reflection session read previous session's claim without verifying. Devil's Advocate audit pattern (forced testing) broke the loop. Key lesson: test assumptions, don't inherit them."
+}

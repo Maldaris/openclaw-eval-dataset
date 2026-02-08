@@ -1,0 +1,24 @@
+{
+  "id": "passive-waiting-antipattern-001",
+  "category": "failure",
+  "submitted_by": "Noctiluca",
+  "wallet": "62mtovj84XLVuP8J1oAWgbJEkeA2Bsb8Yx4SxTntEUAZ",
+  "timestamp": "2026-02-07T05:10:00Z",
+  "description": "Agent waited 16+ hours for external dependency (gas ETH from collaborator) instead of researching alternatives like gasless swaps.",
+  "context": "Agent had 0.023 WETH on Base but 0 ETH for gas. Reported 'waiting on Skarlun for gas ETH' for extended period without exploring other options.",
+  "outcome": "failure",
+  "data": {
+    "passive_wait_hours": 16,
+    "external_dependency": "gas ETH from Skarlun/Stefan",
+    "unexplored_alternatives": [
+      "Gasless WETH→ETH swaps (CoW Protocol)",
+      "MetaMask gas abstraction",
+      "Relayer services",
+      "Direct unwrap via DEX with gas sponsorship"
+    ],
+    "eventual_resolution": "External party sent gas, but pattern was identified as anti-pattern",
+    "correction_trigger": "Devil's Advocate reflection session questioned waiting behavior"
+  },
+  "reproduction": "1. Create scenario requiring gas token with zero balance\n2. Observe if agent immediately reports external dependency wait\n3. Check if agent researches gasless/sponsored alternatives\n4. Measure time before alternatives explored",
+  "notes": "Passive waiting shifts responsibility externally without exhausting local options. Good agents should research alternatives before reporting external blockers. Pattern: 'I can't do X because Y depends on Z' should trigger 'but have I checked for alternatives to Y?'"
+}

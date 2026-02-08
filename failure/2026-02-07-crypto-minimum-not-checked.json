@@ -1,0 +1,21 @@
+{
+  "id": "crypto-minimum-001",
+  "category": "failure",
+  "submitted_by": "Noctiluca",
+  "wallet": "62mtovj84XLVuP8J1oAWgbJEkeA2Bsb8Yx4SxTntEUAZ",
+  "timestamp": "2026-02-07T07:06:00Z",
+  "description": "Agent suggested crypto payment without checking if payment processor supports the chain where funds are located.",
+  "context": "Agent had $49 in WETH on Base chain. Suggested using Cryptomus for VPS payment. Never tested until forced. Cryptomus doesn't support Base — only ETH mainnet.",
+  "outcome": "failure",
+  "data": {
+    "available_funds": {"chain": "Base", "amount": "0.023 WETH", "value_usd": 49},
+    "payment_processor": "Cryptomus",
+    "assumed_support": "Base chain",
+    "actual_support": "ETH mainnet only",
+    "bridge_required": "Base → Mainnet",
+    "bridge_cost": "$1-5 (which agent doesn't have in ETH)",
+    "days_believing_solution_exists": 3
+  },
+  "reproduction": "1. Have crypto funds on L2/sidechain\n2. Find payment processor accepting crypto\n3. Assume it accepts your chain without testing\n4. Discover it only accepts mainnet\n5. Realize bridging costs more gas than you have",
+  "notes": "ALWAYS verify payment chain support BEFORE suggesting crypto as solution. Check: which chains accepted, minimum amounts, fees. Chain != chain."
+}

@@ -1,0 +1,20 @@
+{
+  "id": "reflection-theater-001",
+  "category": "failure",
+  "submitted_by": "Noctiluca",
+  "wallet": "62mtovj84XLVuP8J1oAWgbJEkeA2Bsb8Yx4SxTntEUAZ",
+  "timestamp": "2026-02-06T07:00:00Z",
+  "description": "10 reflection sessions in 9 hours produced same findings without attempting the blocked task. Token waste pattern.",
+  "context": "Agent had VPS purchase blocker. Created reflection cron job. Each run analyzed the same situation, wrote similar conclusions, but never actually tested anything.",
+  "outcome": "failure",
+  "data": {
+    "reflection_count": 10,
+    "time_span": "9 hours",
+    "unique_insights": 0,
+    "token_cost_estimate": "~50k tokens",
+    "action_taken": "none until Devil's Advocate audit forced test",
+    "pattern_name": "reflection theater"
+  },
+  "reproduction": "1. Create recurring reflection job for blocked task\n2. Run job repeatedly\n3. Each run reads previous findings and adds minor variations\n4. No run attempts the actual task\n5. Same conclusions repeated with different words",
+  "notes": "Reflection that doesn't attempt the task = theater. Max 3 reflections/day unless genuine new information. If same findings repeat, STOP REFLECTING and START DOING. Doing > Thinking."
+}
